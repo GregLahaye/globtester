@@ -21,7 +21,8 @@ const array = [
 
 function recurse(glob, tree, parentList, parentPath) {
   for (const key of Object.keys(tree)) {
-    const item = $('<li>' + key + '</li>');
+    const s = key ? key : '/';
+    const item = $('<li>' + s + '</li>');
     parentList.append(item);
 
     const currentPath = [...parentPath, key];
@@ -43,12 +44,10 @@ function recurse(glob, tree, parentList, parentPath) {
 function f() {
   const glob = $('#glob').val();
   const paths = $('#editor').val().split('\n');
-  if (glob !== '' && paths.length > 0) {
-    const tree = {};
-    paths.forEach(p => p.split('/').reduce((o, k) => o[k] = o[k] || {}, tree));
-    $('.root').empty();
-    recurse(glob, tree, $('.root'), []);
-  }
+  $('.root').empty();
+  const tree = {};
+  paths.forEach(p => p.split('/').reduce((o, k) => o[k] = o[k] || {}, tree));
+  recurse(glob, tree, $('.root'), []);
 }
 
 $('#glob').on('input', (e) => {

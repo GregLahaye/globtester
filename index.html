@@ -3,27 +3,20 @@
   <head>
       <link rel="stylesheet" type="text/css" href="stylesheet.css">
   </head>
-<style>
-.match {
-  color: orange;
-}
-</style>
   <body>
-    <main>
-      <section class="left" id="tree">
+    <div class="container">
+      <div class="left">
         <ul class="root"></ul>
-      </section>
-      <section class="right">
-        <section class="input">
-          <input type="text" name="glob" id="glob" autofocus>
-        </section>
-        <section id="stage" class="edit">
-          <article class="edit">
-            <textarea rows="8" cols="50" wrap="soft" id="editor" spellcheck="false"></textarea>
-          </article>
-        </section>
-      </section>
-    </main>
+      </div>
+      <div class="right">
+        <div class="input">
+          <input type="text" name="glob" id="glob" autofocus spellcheck="false">
+        </div>
+        <div class="textarea">
+            <textarea rows="8" cols="50" id="editor" spellcheck="false"></textarea>
+        </div>
+      </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="bundle.js"></script>
