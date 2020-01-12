@@ -5,20 +5,6 @@ body {
   padding: 0;
 }
 
-.match {
-  color: #7fcd91;
-}
-
-ul {
-  list-style-type: square;
-}
-
-li {
-  font-family: monospace;
-  color: #f5eaea;
-  font-size: 1.4rem;
-}
-
 .container {
   width: 100%;
   height: 100%;
@@ -27,49 +13,64 @@ li {
 .left {
   min-width: 30%;
   height: 100%;
-  background: #4d4646;
   float: left;
-  padding: 0 20px;
+  padding: 0 20px 0 0;
+  background: #4d4646;
 }
 
 .right {
-  margin-left: 30%;
   height: 100%;
+  margin-left: 30%;
   background: #5b5656;
 }
 
-.glob {
+ul {
+  list-style-type: square;
+}
+
+li {
+  font-size: 1.4rem;
+  font-family: monospace;
+  color: #f5eaea;
+}
+
+.up {
   text-align: center;
 }
 
 #glob {
-  top: 100px;
-  text-align: center;
   width: 80%;
   height: 60px;
+  top: 100px;
+  margin: 40px 0 0 0;
+  text-align: center;
   font-size: 2rem;
   font-family: monospace;
-  margin-top: 40px;
+  color: #f5eaea;
   background: #5b5656;
   border: none;
   outline: none;
-  color: #f5eaea;
 }
 
-.textarea {
-  text-align: center;
-  padding: 0 40px;
+.lower {
   height: 60%;
+  padding: 0 40px;
+  text-align: center;
 }
-#editor {
+
+#patterns {
   width: 80%;
   height: 100%;
+  margin: 40px 0 0 0;
   font-size: 1.4rem;
   font-family: monospace;
-  margin-top: 40px;
+  color: #f5eaea;
   background: #5b5656;
   border: none;
   outline: none;
-  color: #f5eaea;
   resize: none;
+}
+
+.match {
+  color: #7fcd91;
 }

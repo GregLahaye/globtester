@@ -6,10 +6,10 @@
   <body>
     <div class="container">
       <div class="left">
-        <ul class="root"></ul>
+        <ul id="root"></ul>
       </div>
       <div class="right">
-        <div class="input">
+        <div class="upper">
           <input
             type="text"
             name="glob"
@@ -18,13 +18,8 @@
             spellcheck="false"
           />
         </div>
-        <div class="textarea">
-          <textarea
-            rows="8"
-            cols="50"
-            id="editor"
-            spellcheck="false"
-          ></textarea>
+        <div class="lower">
+          <textarea id="patterns" spellcheck="false"></textarea>
         </div>
       </div>
     </div>

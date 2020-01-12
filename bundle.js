@@ -42,15 +42,15 @@ function recurse(glob, tree, parentList, parentPath) {
 
 function f() {
   const glob = $('#glob').val();
-  const paths = $('#editor')
+  const paths = $('#patterns')
     .val()
     .split('\n');
-  $('.root').empty();
+  $('#root').empty();
   const tree = {};
   paths.forEach((p) =>
     p.split('/').reduce((o, k) => (o[k] = o[k] || {}), tree)
   );
-  recurse(glob, tree, $('.root'), []);
+  recurse(glob, tree, $('#root'), []);
 }
 
 $('#glob').on('input', (e) => {
