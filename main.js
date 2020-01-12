@@ -1,23 +1,22 @@
 const minimatch = require('minimatch');
 
-/*
-const array = [
-  '/myapp/readme.md',
-  '/myapp/config/staging.js',
-  '/myapp/config/production.js',
-  '/myapp/src/services/utils.js',
-  '/myapp/src/services/timezone.ts',
-  '/myapp/src/controllers/health.js',
-  '/myapp/src/controllers/user.module.ts',
-  '/myapp/assets/logo.png',
-  '/myapp/assets/logo_small.png',
-  '/myapp/assets/favicon.ico',
-  '/file',
-  '/folder/',
-];
-*/
+const defaultPatterns = `/myapp/readme.md
+/myapp/config/staging.js
+/myapp/config/production.js
+/myapp/src/services/utils.js
+/myapp/src/services/timezone.ts
+/myapp/src/controllers/health.js
+/myapp/src/controllers/user.module.ts
+/myapp/assets/logo.png
+/myapp/assets/logo_small.png
+/myapp/assets/favicon.ico`;
 
-function recurse(glob, tree, parentList, parentPath) {
+const defaultGlob = '**/*.ts';
+
+$('#patterns').val(defaultPatterns);
+$('#glob').val(defaultGlob);
+
+function updateTreeRecursive(glob, tree, parentList, parentPath) {
   for (const key of Object.keys(tree)) {
     const s = key ? key : '/';
     const item = $('<li>' + s + '</li>');
@@ -29,7 +28,7 @@ function recurse(glob, tree, parentList, parentPath) {
       const currentList = $('<ul></ul>');
       parentList.append(currentList);
 
-      recurse(glob, tree[key], currentList, currentPath);
+      updateTreeRecursive(glob, tree[key], currentList, currentPath);
     } else if (key) {
       const pathString = currentPath.join('/');
       if (minimatch(pathString, glob)) {
@@ -39,7 +38,7 @@ function recurse(glob, tree, parentList, parentPath) {
   }
 }
 
-function f() {
+function updateTree() {
   const glob = $('#glob').val();
   const paths = $('#patterns')
     .val()
@@ -49,13 +48,16 @@ function f() {
   paths.forEach((p) =>
     p.split('/').reduce((o, k) => (o[k] = o[k] || {}), tree)
   );
-  recurse(glob, tree, $('#root'), []);
+  updateTreeRecursive(glob, tree, $('#root'), []);
 }
 
 $('#glob').on('input', (e) => {
-  f();
+  updateTree();
 });
 
-$('#editor').on('input', (e) => {
-  f();
+$('#patterns').on('input', (e) => {
+  updateTree();
 });
+
+updateTree();
+
