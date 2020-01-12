@@ -18,7 +18,6 @@ const array = [
 ];
 */
 
-
 function recurse(glob, tree, parentList, parentPath) {
   for (const key of Object.keys(tree)) {
     const s = key ? key : '/';
@@ -43,10 +42,14 @@ function recurse(glob, tree, parentList, parentPath) {
 
 function f() {
   const glob = $('#glob').val();
-  const paths = $('#editor').val().split('\n');
+  const paths = $('#editor')
+    .val()
+    .split('\n');
   $('.root').empty();
   const tree = {};
-  paths.forEach(p => p.split('/').reduce((o, k) => o[k] = o[k] || {}, tree));
+  paths.forEach((p) =>
+    p.split('/').reduce((o, k) => (o[k] = o[k] || {}), tree)
+  );
   recurse(glob, tree, $('.root'), []);
 }
 
@@ -57,7 +60,6 @@ $('#glob').on('input', (e) => {
 $('#editor').on('input', (e) => {
   f();
 });
-
 
 },{"minimatch":5}],2:[function(require,module,exports){
 'use strict';
